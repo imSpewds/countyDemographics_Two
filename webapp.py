@@ -6,17 +6,16 @@ app = Flask(_name_)
 
 @app.route("/")
 def get_state_options():
-	with open('county_demographics.json') as demographics_data:
+    with open('county_demographics.json') as demographics_data:
         counties = json.load(demographics_data)
-	listOfStates = []
-	for county in counties:
-		if county['State'] !in listOfStates:
-			listOfStates.append(county['State'])
-			
-	options = ""
-	for state in listOfStates:
-		options = options + Markup("<option value=\"" + s + "\">" + s + "</option>")
-	return options
+    listOfStates = []
+    for county in counties:
+        if county['State'] !in listOfStates:
+            listOfStates.append(county['State'])
+    options = ""
+    for state in listOfStates:
+        options = options + Markup("<option value=\"" + s + "\">" + s + "</option>")
+    return options
 	
 
 if __name__=="__main__":
