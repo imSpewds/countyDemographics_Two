@@ -13,6 +13,7 @@ def get_state_options():
         if county['State'] not in listOfStates:
             listOfStates.append(county['State'])
     options = ""
+    state = request.args['State']
     for state in listOfStates:
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
