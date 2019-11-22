@@ -15,7 +15,7 @@ def get_state_options():
     options = ""
     for state in listOfStates:
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
-    return render_template('index.html', responseFromServer=options)
+    return options
 
 if __name__=="__main__":
     app.run(debug=False)
