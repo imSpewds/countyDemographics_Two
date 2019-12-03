@@ -1,4 +1,4 @@
-from flask import Flask, request, Markup, render_template, flash
+from flask import Flask, request, Markup, render_template, flash, url_for
 import os
 import json
 
@@ -15,7 +15,7 @@ def get_state_options():
     for state in listOfStates:
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
-    
+
 @app.route("/")
 def render_main():
     return render_template('index.html', responseFromServer = get_state_options())
