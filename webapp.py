@@ -18,7 +18,7 @@ def get_state_options():
     
 @app.route("/")
 def render_main():
-    return render_template('index.html', responseFromServer = options)
+    return render_template('index.html', responseFromServer = get_state_options())
     
 if __name__=="__main__":
     app.run(debug=False)
