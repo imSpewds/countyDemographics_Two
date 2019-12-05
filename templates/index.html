@@ -6,6 +6,10 @@
 	
 	<body>
 		<h1> State Facts</h1>
-		<select> {{ responseFromServer }}</select>
+		<form action="/response">
+			<select> {{ responseFromServer }} </select>
+			<br><br>
+			<input type="submit">
+		</form>
 	</body>
 </html>
