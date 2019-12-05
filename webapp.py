@@ -4,7 +4,12 @@ import json
 
 app = Flask(__name__)
 
-def get_state_facts():
+def get_state_facts(state):
+    fact = 0
+    for key in counties:
+        if key["State"] == state:
+            fact = state["Income"]["Median Household Income"]
+    return fact
 
 def get_state_options():
     with open('county_demographics.json') as demographics_data:
@@ -15,7 +20,7 @@ def get_state_options():
             listOfStates.append(county['State'])
     options = ""
     for state in listOfStates:
-        options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
+        options = options + Markup("<option value=\"" + state + "\">" + state + "</option>" + "<p>" + get_state_facts(state) + "</p>")
     return options
 
 @app.route("/")
