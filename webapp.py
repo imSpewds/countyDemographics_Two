@@ -5,6 +5,8 @@ import json
 app = Flask(__name__)
 
 def get_state_facts(state):
+    with open('county_demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
     fact = 0
     for key in counties:
         if key["State"] == state:
