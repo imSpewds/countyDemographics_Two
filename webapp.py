@@ -5,8 +5,6 @@ import json
 app = Flask(__name__)
 
 def get_state_facts():
-    with open('county_demographics.json') as demographics_data:
-        counties = json.load(demographics_data)
 
 def get_state_options():
     with open('county_demographics.json') as demographics_data:
