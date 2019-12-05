@@ -4,18 +4,17 @@ import json
 
 app = Flask(__name__)
 
-with open('county_demographics.json') as demographics_data:
+def get_state_facts():
+    with open('county_demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
+
+def get_state_options():
+    with open('county_demographics.json') as demographics_data:
         counties = json.load(demographics_data)
     listOfStates = []
     for county in counties:
         if county['State'] not in listOfStates:
             listOfStates.append(county['State'])
-
-"""def get_state_facts():
-    with open('county_demographics.json') as demographics_data:
-        counties = json.load(demographics_data)"""
-
-def get_state_options():
     options = ""
     for state in listOfStates:
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
