@@ -5,6 +5,8 @@
 	</head>
 	
 	<body>
+	{% block content %}
+	
 		<h1> State Facts</h1>
 		<form action='/response'>
 			<select> {{ responseFromServer }} </select>
@@ -12,6 +14,6 @@
 			<input type="submit">
 		</form>
 		
-		{% block content %}{% endblock %}
+	{% endblock %}
 	</body>
 </html>
