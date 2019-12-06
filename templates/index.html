@@ -4,9 +4,7 @@
 		<title> State Facts</title>
 	</head>
 	
-	<body>
-	{% block content %}
-	
+	<body>	
 		<h1> State Facts</h1>
 		<form action='/response'>
 			<select> {{ responseFromServer }} </select>
@@ -14,6 +12,6 @@
 			<input type="submit">
 		</form>
 		
-	{% endblock %}
+		{% endblock %}{% block content %}
 	</body>
 </html>
