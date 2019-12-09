@@ -26,7 +26,7 @@ def render_main():
     
 @app.route("/response")
 def render_response():
-    return render_template('response.html', responseFromServer2 = "hi")
+    return render_template('response.html', responseFromServer2 = request.args['State'])
 
 if __name__=="__main__":
     app.run(debug=False)
