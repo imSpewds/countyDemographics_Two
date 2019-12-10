@@ -18,7 +18,7 @@ def get_state_options():
     return options
     
 def get_state_facts(state):
-    income = 0
+    income = ""
     
     fact = ""
     for county in counties:
@@ -34,7 +34,7 @@ def render_main():
 @app.route("/response")
 def render_response():
     returnState = request.args['returnState']
-    return render_template('index.html', stateFact = get_state_facts(returnState))
+    return render_template('index.html', stateFact = get_state_facts(returnState), options = get_state_options())
     
 if __name__=="__main__":
     app.run(debug=False)
