@@ -18,7 +18,7 @@ def get_state_options():
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
     
-def get_state_facts(state):
+"""def get_state_facts(state):
     income = 0
     
     fact = ""
@@ -26,7 +26,7 @@ def get_state_facts(state):
         if state == county['State']:
             income = county['Income']['Median Houseold Income']
     fact = Markup("<p>" + "Median household income for " + state + " is " + "$" + income + "</p>")
-    return fact
+    return fact"""
     
 @app.route("/")
 def render_main():
@@ -35,7 +35,7 @@ def render_main():
 @app.route("/response")
 def render_response():
     returnState = request.args['returnState']
-    return render_template('index.html', options = get_state_options(), stateFact = get_state_facts(returnState))
+    return render_template('index.html', options = get_state_options(), stateFact = "hi" """get_state_facts(returnState)""")
     
 if __name__=="__main__":
     app.run(debug=True)
