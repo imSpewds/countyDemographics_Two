@@ -1,4 +1,4 @@
-from flask import Flask, request, Markup, render_template, flash
+from flask import Flask url_for, request, Markup, render_template, flash
 import os
 import json
 
@@ -19,7 +19,7 @@ def get_state_options():
     return options
     
 def get_state_facts(state):
-    income = ""
+    income = 0
     
     for county in counties:
         if state == county['State']:
@@ -27,8 +27,6 @@ def get_state_facts(state):
     fact = Markup("<p>" + "Median household income for " + state + " is " + "$" + income + "</p>")
     return fact
     
-    
-
 @app.route("/")
 def render_main():
     return render_template('index.html', options = get_state_options())
