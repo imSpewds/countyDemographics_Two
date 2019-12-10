@@ -4,29 +4,38 @@ import json
 
 app = Flask(__name__)
 
-"""def get_state_facts(state):
-    with open('county_demographics.json') as demographics_data:
-        counties = json.load(demographics_data)"""
+with open('county_demographics.json') as demographics_data:
+    counties = json.load(demographics_data)
 
 def get_state_options():
-    with open('county_demographics.json') as demographics_data:
-        counties = json.load(demographics_data)
     listOfStates = []
     for county in counties:
         if county['State'] not in listOfStates:
             listOfStates.append(county['State'])
+            state = county['State']
     options = ""
     for state in listOfStates:
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
+    
+def get_state_facts(state):
+    income = 0
+    
+    for county in counties:
+        if state == county['State']:
+            income = county['Income']['Median Houseold Income']
+    fact = Markup("<p>" + "Median household income for " + state + " is " + "$" + income)
+    
+    
 
 @app.route("/")
 def render_main():
-    return render_template('index.html', responseFromServer = get_state_options())
-    
+    return render_template('index.html', options = get_state_options())
+
 @app.route("/response")
 def render_response():
-    return render_template('response.html', responseFromServer2 = request.args['State'])
-
+    state = request.args['state']
+    return render_template('index.html', stateFact = get_state_facts(state), options = get_state_options())
+    
 if __name__=="__main__":
     app.run(debug=False)

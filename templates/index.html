@@ -7,11 +7,10 @@
 	<body>	
 		<h1> State Facts</h1>
 		<form action='/response'>
-			<select name="state"> {{ responseFromServer }} </select>
+			<select name="state"> {{ options }} </select>
 			<br><br>
 			<input type="submit">
 		</form>
-		
-		{% block content %}{% endblock %}
+		{{ stateFact }}
 	</body>
 </html>
