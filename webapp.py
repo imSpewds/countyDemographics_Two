@@ -21,6 +21,7 @@ def get_state_options():
 def get_state_facts(state):
     income = 0
     
+    fact = ""
     for county in counties:
         if state == county['State']:
             income = county['Income']['Median Houseold Income']
