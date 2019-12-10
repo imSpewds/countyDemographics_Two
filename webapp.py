@@ -12,13 +12,12 @@ def get_state_options():
     for county in counties:
         if county['State'] not in listOfStates:
             listOfStates.append(county['State'])
-            state = county['State']
     options = ""
     for state in listOfStates:
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
     
-"""def get_state_facts(state):
+def get_state_facts(state):
     income = 0
     
     fact = ""
@@ -26,7 +25,7 @@ def get_state_options():
         if state == county['State']:
             income = county['Income']['Median Houseold Income']
     fact = Markup("<p>" + "Median household income for " + state + " is " + "$" + income + "</p>")
-    return fact"""
+    return fact
     
 @app.route("/")
 def render_main():
@@ -35,7 +34,7 @@ def render_main():
 @app.route("/response")
 def render_response():
     returnState = request.args['returnState']
-    return render_template('index.html', options = get_state_options(), stateFact = returnState)
+    return render_template('index.html', options = get_state_options(), stateFact = get_state_facts(returnState))
     
 if __name__=="__main__":
     app.run(debug=True)
