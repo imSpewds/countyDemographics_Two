@@ -18,13 +18,13 @@ def get_state_options():
     return options
     
 def get_state_facts(state):
-    income = ""
+    income = 0
     
     fact = ""
     for county in counties:
         if state == county['State']:
             income = county['Income']['Median Houseold Income']
-    fact = fact + Markup("<p>" + "Median household income for " + state + " is " + "$" + income + "</p>")
+    fact = fact + Markup("<p>" + "Median household income for " + state + " is " + "$" + str(income) + "</p>")
     return fact
     
 @app.route("/")
