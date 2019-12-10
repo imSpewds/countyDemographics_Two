@@ -31,10 +31,10 @@ def get_state_facts(state):
 def render_main():
     return render_template('index.html', options = get_state_options())
 
-@app.route("/response", methods=['GET','POST'])
+@app.route("/response")
 def render_response():
     returnState = request.args['returnState']
-    return render_template('index.html', stateFact = get_state_facts(returnState), options = get_state_options())
+    return render_template('index.html', stateFact = get_state_facts(returnState))
     
 if __name__=="__main__":
     app.run(debug=False)
