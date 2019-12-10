@@ -1,4 +1,4 @@
-from flask import Flask url_for, request, Markup, render_template, flash
+from flask import Flask, url_for, request, Markup, render_template, flash
 import os
 import json
 
