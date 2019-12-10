@@ -33,7 +33,7 @@ def get_state_facts(state):
 def render_main():
     return render_template('index.html', options = get_state_options())
 
-@app.route("/response")
+@app.route("/response", methods=['GET','POST'])
 def render_response():
     state = request.args['state']
     return render_template('index.html', stateFact = get_state_facts(state), options = get_state_options())
