@@ -24,7 +24,7 @@ def get_state_facts(state):
     for county in counties:
         if state == county['State']:
             income = county['Income']['Median Houseold Income']
-    fact = Markup("<p>" + "Median household income for " + state + " is " + "$" + income + "</p>")
+    fact = fact + Markup("<p>" + "Median household income for " + state + " is " + "$" + income + "</p>")
     return fact
     
 @app.route("/")
@@ -37,4 +37,4 @@ def render_response():
     return render_template('index.html', options = get_state_options(), stateFact = get_state_facts(returnState))
     
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=False)
