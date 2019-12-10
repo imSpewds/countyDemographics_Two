@@ -35,7 +35,7 @@ def render_main():
 @app.route("/response")
 def render_response():
     returnState = request.args['returnState']
-    return render_template('index.html', options = get_state_options(), stateFact = "hi" """get_state_facts(returnState)""")
+    return render_template('index.html', options = get_state_options(), stateFact = """get_state_facts(returnState)""")
     
 if __name__=="__main__":
     app.run(debug=True)
